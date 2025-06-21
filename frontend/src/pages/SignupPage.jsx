@@ -248,7 +248,7 @@ function SignupPage() {
           <button type="submit">가입하기</button>
         </form>
       </div>
-      {showTerms && <TermsModal title="이용약관" content={termsContent} onClose={() => setShowTerms(false)} />}
+      {showTerms && <TermsModal title="이용약관" btnText="동의" content={termsContent} onClose={() => setShowTerms(false)} />}
     </div>
   );
 }
