@@ -12,7 +12,7 @@ function LoginPage() {
     password: '',
   });
   const [rememberMe, setRememberMe] = useState(false);
-  const [captchaToken, setCaptchaToken] = useState(null); // ✅ 캡차 토큰 상태
+  const [captchaToken, setCaptchaToken] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +23,7 @@ function LoginPage() {
   };
 
   const handleCaptchaChange = (token) => {
-    setCaptchaToken(token); // ✅ 인증 성공 시 토큰 저장
+    setCaptchaToken(token);
   };
 
   const handleSubmit = async (e) => {
@@ -86,7 +86,7 @@ function LoginPage() {
           <div className="recaptcha-wrapper">
             <ReCAPTCHA
               sitekey="6LdiqGkrAAAAAL-SqMksT7iMbWHQtwLWszsu1TMk"
-              onChange={(value) => setCaptchaValue(value)}
+              onChange={handleCaptchaChange}
             />
           </div>
 
