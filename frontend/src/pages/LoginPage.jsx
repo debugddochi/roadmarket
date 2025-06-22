@@ -24,7 +24,7 @@ function LoginPage() {
     e.preventDefault();
     try {
       const res = await axios.post('https://localhost:8443/auth/login', form);
-      const token = res.data; // JWT 토큰이라고 가정
+      const token = res.data;
 
       if (rememberMe) {
         localStorage.setItem('token', token);
@@ -69,6 +69,9 @@ function LoginPage() {
 
           <button type="submit">로그인</button>
         </form>
+        <p className="signup-link">
+          아직 계정이 없으신가요? <span onClick={() => navigate('/signup')}>회원가입</span>
+        </p>
       </div>
     </div>
   );

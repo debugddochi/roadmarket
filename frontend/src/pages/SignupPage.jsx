@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import '../styles/SignupPage.css';
 import TermsModal from '../components/TermsModal';
+import { IoChevronBack } from 'react-icons/io5';
 
 function SignupPage() {
   const navigate = useNavigate();
@@ -195,6 +196,9 @@ function SignupPage() {
   return (
     <div className="signup-wrapper fade-in">
       <div className="signup-container slide-up">
+        <button className="back-button" onClick={() => navigate('/login')}>
+          <IoChevronBack size={24} />
+        </button>
         <h2>회원가입</h2>
         <form className="signup-form" onSubmit={handleSubmit}>
           <label>아이디</label>

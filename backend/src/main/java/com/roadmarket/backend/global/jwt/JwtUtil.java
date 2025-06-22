@@ -24,7 +24,8 @@ public class JwtUtil {
      */
     public String generateToken(String userId) {
         return Jwts.builder()
-                .setSubject(userId) // 사용자 식별 정보
+                .setSubject("로드마켓 로그인 토큰") // 사용자 식별 정보
+                .claim("userId", userId)
                 .setIssuedAt(new Date()) // 토큰 발급 시간
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)) // 만료 시간
                 .signWith(key) // 서명

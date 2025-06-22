@@ -75,7 +75,6 @@ body {
   transform: scale(0.98);
 }
 
-/* ✅ 로그인 유지 체크박스 스타일 */
 .remember-row {
   display: flex;
   align-items: center;
@@ -83,6 +82,24 @@ body {
   margin-top: 12px;
   color: #ccc;
   font-size: 0.95em;
+}
+
+.signup-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.signup-link span {
+  color: #4db8ff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.signup-link span:hover {
+  color: #82d4ff;
 }
 
 /* === Animation Effects === */
