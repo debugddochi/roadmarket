@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import ReCAPTCHA from 'react-google-recaptcha';
 import '../styles/LoginPage.css';
 
 function LoginPage() {
@@ -11,6 +12,7 @@ function LoginPage() {
     password: '',
   });
   const [rememberMe, setRememberMe] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState(null); // ✅ 캡차 토큰 상태
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,8 +22,22 @@ function LoginPage() {
     }));
   };
 
+  const handleCaptchaChange = (token) => {
+    setCaptchaToken(token); // ✅ 인증 성공 시 토큰 저장
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      Swal.fire({
+        icon: 'warning',
+        title: '앗! 아직 인증을 안 하셨어요',
+        text: '아래 체크박스를 클릭하시면 로그인이 가능해요.',
+      });
+      return;
+    }
+
     try {
       const res = await axios.post('https://localhost:8443/auth/login', form);
       const token = res.data;
@@ -66,6 +82,13 @@ function LoginPage() {
             />
             로그인 유지
           </label>
+
+          <div className="recaptcha-wrapper">
+            <ReCAPTCHA
+              sitekey="6LdiqGkrAAAAAL-SqMksT7iMbWHQtwLWszsu1TMk"
+              onChange={(value) => setCaptchaValue(value)}
+            />
+          </div>
 
           <button type="submit">로그인</button>
         </form>

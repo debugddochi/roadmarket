@@ -102,6 +102,18 @@ body {
   color: #82d4ff;
 }
 
+.recaptcha-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.recaptcha-wrapper > div {
+  width: 100%;
+  max-width: 300px;
+}
+
 /* === Animation Effects === */
 @keyframes fadeUp {
   to {
