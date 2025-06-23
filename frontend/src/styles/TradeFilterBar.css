@@ -1,0 +1,75 @@
+.filter-wrapper {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.filter-group {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+  min-width: 70px;
+}
+
+.filter-group button {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-group button:hover {
+  background-color: #e0f7fa;
+}
+
+.filter-group button.active {
+  background-color: #4fc3f7;
+  color: white;
+  border-color: #4fc3f7;
+}
+
+.search-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 250px;
+  max-width: 500px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.reset-button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: white;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.reset-button:hover {
+  background-color: #f0f0f0;
+}

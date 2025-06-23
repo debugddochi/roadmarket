@@ -15,8 +15,7 @@ function Navbar({ userId, timeLeft, onLogout }) {
     <nav className="navbar">
       <div className="navbar-left">
         <Link to="/" className="logo">로드마켓</Link>
-        <Link to="/buy">구매 게시판</Link>
-        <Link to="/sell">판매 게시판</Link>
+        <Link to="/trade">게시판</Link>
         <Link to="/faq">FAQ</Link>
       </div>
 

@@ -1,0 +1,36 @@
+.trade-list-page {
+  padding: 1rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.page-header h2 {
+  margin: 0;
+}
+
+.write-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #4fc3f7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.write-button:hover {
+  background-color: #039be5;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+}
