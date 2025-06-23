@@ -7,45 +7,60 @@ import org.springframework.stereotype.Component;
 import java.security.Key;
 import java.util.Date;
 
-/**
- * JWT 발급 및 검증을 담당하는 유틸리티 클래스
- */
 @Component
 public class JwtUtil {
 
-    // JWT 서명에 사용할 비밀키 (보통 application.yml에서 주입받음)
+    // JWT 서명에 사용할 비밀키
     private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    // JWT 유효 기간 설정 (예: 1시간)
+    // 유효 기간: 1시간
     private final long EXPIRATION_TIME = 60 * 60 * 1000;
 
     /**
-     * 사용자 ID를 기반으로 JWT 토큰을 생성
+     * 사용자 ID와 닉네임을 기반으로 JWT 생성
      */
-    public String generateToken(String userId) {
+    public String generateToken(String userId, String nickname) {
         return Jwts.builder()
-                .setSubject("로드마켓 로그인 토큰") // 사용자 식별 정보
+                .setSubject(userId) // subject: userId
                 .claim("userId", userId)
-                .setIssuedAt(new Date()) // 토큰 발급 시간
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)) // 만료 시간
-                .signWith(key) // 서명
+                .claim("nickname", nickname) // ✅ 닉네임 claim에 추가
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .signWith(key)
                 .compact();
     }
 
     /**
-     * JWT 토큰에서 사용자 ID를 추출
+     * 토큰에서 사용자 ID 추출
      */
     public String getUserIdFromToken(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(key) // 서명 키 설정
+                .setSigningKey(key)
                 .build()
-                .parseClaimsJws(token) // 토큰 파싱
+                .parseClaimsJws(token)
                 .getBody()
-                .getSubject(); // subject에 저장된 사용자 ID 반환
+                .getSubject(); // subject == userId
     }
 
     /**
-     * 토큰이 유효한지 검증
+     * 토큰에서 닉네임 추출
+     */
+    public String getNicknameFromToken(String token) {
+        try {
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+
+            return claims.get("nickname", String.class);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /**
+     * 토큰 유효성 검증
      */
     public boolean validateToken(String token) {
         try {

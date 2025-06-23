@@ -43,7 +43,7 @@ public class AuthService {
         }
 
         // JWT 토큰 발급
-        String token = jwtUtil.generateToken(user.getUserId());
+        String token = jwtUtil.generateToken(user.getUserId(), user.getNickname());
 
         return ResponseEntity.ok(token);
     }
