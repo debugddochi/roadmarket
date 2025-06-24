@@ -1,5 +1,6 @@
 package com.roadmarket.backend.domain.trade.controller;
 
+import com.roadmarket.backend.domain.trade.dto.TradePostDetailResponseDto;
 import com.roadmarket.backend.domain.trade.dto.TradePostListResponseDto;
 import com.roadmarket.backend.domain.trade.dto.TradePostSaveRequestDto;
 import com.roadmarket.backend.domain.trade.service.TradePostService;
@@ -35,5 +36,11 @@ public class TradePostController {
     public ResponseEntity<List<TradePostListResponseDto>> getAllPosts() {
         List<TradePostListResponseDto> posts = tradePostService.getAllPosts();
         return ResponseEntity.ok(posts);
+    }
+
+    @GetMapping("/{postSq}")
+    public ResponseEntity<TradePostDetailResponseDto> getPostDetail(@PathVariable Long postSq) {
+        TradePostDetailResponseDto detail = tradePostService.getPostDetail(postSq);
+        return ResponseEntity.ok(detail);
     }
 }

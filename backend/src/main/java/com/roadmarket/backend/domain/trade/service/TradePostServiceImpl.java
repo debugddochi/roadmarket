@@ -4,14 +4,17 @@ import com.roadmarket.backend.domain.trade.dto.TradePostListResponseDto;
 import com.roadmarket.backend.domain.trade.dto.TradePostSaveRequestDto;
 import com.roadmarket.backend.domain.trade.entity.TradePost;
 import com.roadmarket.backend.domain.trade.repository.TradePostRepository;
+import com.roadmarket.backend.domain.trade.dto.TradePostDetailResponseDto;
 import com.roadmarket.backend.global.jwt.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TradePostServiceImpl implements TradePostService {
@@ -50,5 +53,17 @@ public class TradePostServiceImpl implements TradePostService {
                 .filter(post -> !post.isDeleted())
                 .map(TradePostListResponseDto::new)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public TradePostDetailResponseDto getPostDetail(Long postSq) {
+        System.out.println("📥 게시글 상세 조회 요청 postSq: {}" + postSq);
+        TradePost post = tradePostRepository.findById(postSq)
+                .orElseThrow(() -> {
+                    return new RuntimeException("해당 게시글이 없습니다.");
+                });
+        System.out.println("✅ 게시글 조회 성공: {}" + post.getTitle());
+
+        return new TradePostDetailResponseDto(post);
     }
 }

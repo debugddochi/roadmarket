@@ -61,7 +61,7 @@ const Layout = () => {
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        setUserId(decoded.userId || decoded.sub || '알 수 없음');
+        setUserId(decoded.nickname || decoded.userId || decoded.sub || '알 수 없음');
         resetTimer();
 
         const events = ['mousemove', 'keydown', 'click'];
