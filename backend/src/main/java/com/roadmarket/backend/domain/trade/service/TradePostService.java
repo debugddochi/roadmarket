@@ -10,4 +10,7 @@ public interface TradePostService {
     void createPost(TradePostSaveRequestDto dto, String token);
     List<TradePostListResponseDto> getAllPosts();
     TradePostDetailResponseDto getPostDetail(Long postSq);
+    boolean verifyGuestPassword(Long postSq, String inputPassword);
+    void deletePost(Long postSq, String guestPassword, String token);
+    void updatePost(Long postSq, TradePostSaveRequestDto dto, String token);
 }

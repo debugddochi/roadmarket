@@ -4,7 +4,8 @@ import SignupPage from '../pages/SignupPage.jsx';
 import MainPage from '../pages/MainPage.jsx';
 import TradeListPage from '../pages/TradeListPage.jsx';
 import Layout from '../components/Layout.jsx';
-import TradeDetailPage from '../pages/TradeDetailPage.jsx'; 
+import TradeDetailPage from '../pages/TradeDetailPage.jsx';
+import TradeEditPage from '../pages/TradeEditPage.jsx';
 
 const Router = () => {
   return (
@@ -21,6 +22,7 @@ const Router = () => {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/trade" element={<TradeListPage />} />
           <Route path="/trade/:postSq" element={<TradeDetailPage />} />
+          <Route path="/trade/edit/:postSq" element={<TradeEditPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
