@@ -100,7 +100,7 @@ const TradeEditPage = () => {
         value={form.tradeType}
         onChange={handleChange}
       >
-        <option value="">거래 유형 선택</option>
+        <option value="">거래 유형</option>
         <option value="BUY">삽니다</option>
         <option value="SELL">팝니다</option>
       </select>
@@ -108,14 +108,14 @@ const TradeEditPage = () => {
       {isGuest && (
         <input
           type="password"
-          placeholder="비밀번호 입력"
+          placeholder="게시글 등록 비밀번호"
           value={passwordInput}
           onChange={(e) => setPasswordInput(e.target.value)}
         />
       )}
 
       <div className="button-group">
-        <button onClick={handleSubmit}>수정하기</button>
+        <button onClick={handleSubmit}>수정</button>
         <button onClick={() => navigate(-1)}>취소</button>
       </div>
     </div>
