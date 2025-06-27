@@ -41,7 +41,7 @@ public class TradePostServiceImpl implements TradePostService {
         post.setServerName(dto.getServerName());
         post.setServerNumber(dto.getServerNumber());
         post.setTradeType(dto.getTradeType());
-        post.setWriterNickname(nickname); // ✅ 닉네임 저장
+        post.setWriterNickname(nickname);
         post.setGuestPassword(dto.getGuestPassword());
         post.setFileId(dto.getFileId());
         post.setCreatedAt(LocalDateTime.now());
